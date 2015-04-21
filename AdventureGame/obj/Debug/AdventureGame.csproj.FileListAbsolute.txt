@@ -1,0 +1,6 @@
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\bin\Debug\AdventureGame.exe.config
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\bin\Debug\AdventureGame.exe
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\bin\Debug\AdventureGame.pdb
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\obj\Debug\AdventureGame.csprojResolveAssemblyReference.cache
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\obj\Debug\AdventureGame.exe
+C:\Users\Per\Desktop\Kod\AdventureGame\AdventureGame\obj\Debug\AdventureGame.pdb
