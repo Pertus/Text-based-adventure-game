@@ -13,10 +13,6 @@ namespace AdventureGame
 
         static void Main(string[] args)
         {
-           
-            
-
-
             Console.WriteLine("------------EPIC ADVENTURE GAME-----------\n");
             CreateCharacter();
             Console.ReadLine();
@@ -35,9 +31,17 @@ namespace AdventureGame
             SelectGender();
             SelectRace();
             SelectClass();
-            Console.WriteLine("You are a " + player.Gender.ToLower() + " " + player.Race.ToLower() + " " + player.Class.ToLower() + 
-                "\n\n Your stats is:\n Strength: " + player.Strength + "\n Dexterity: " + player.Dexterity + "\n Constitution: " + player.Constitution + "\n Intelligence: " + player.Intelligence + 
-                "\n Wisdom: "+ player.Wisdom + "\n Charisma: " + player.Charisma + "\n\n Is this ok?\n 1. Yes \n 2. No");
+            SelectName();
+            Console.Clear();
+            Console.WriteLine("You are " + player.Name + ". " + "A " + player.Gender.ToLower() + " " + player.Race.ToLower() + " " + player.Class.ToLower() +
+                ".\n\n Your stats is:\n Strength: " + player.Strength + "\n Dexterity: " + player.Dexterity + "\n Constitution: " + player.Constitution + "\n Intelligence: " + player.Intelligence +
+                "\n Wisdom: " + player.Wisdom + "\n Charisma: " + player.Charisma);
+            Console.WriteLine("\n You have the following items in your inventory:");
+            foreach (InventoryObject i in player.Inventory)
+            {
+                Console.WriteLine(i.Name);
+            }
+            Console.WriteLine("\n Is this ok?\n 1. Yes \n 2. No");
             string confirmation = Console.ReadLine();
 
             switch (confirmation)
@@ -110,10 +114,19 @@ namespace AdventureGame
             switch (classSelector)
             {
                 case ("1"): player.Class = "Warrior";
+                    player.Strength++;
+                    player.Constitution++;
+                    player.Inventory.Add(new Weapon("Longsword", true, 1.0, 0.2, 0.0, 10, 13, 5, DamageType.Pierce));
+                    player.Inventory.Add(new Consumable("Health potion", ConsumableEffects.HealthPotion));
+                    player.Inventory.Add(new Armor("Chainmail", 5));
                     break;
                 case ("2"): player.Class = "Mage";
+                    player.Intelligence++;
+                    player.Wisdom++;
                     break;
                 case ("3"): player.Class = "Thief";
+                    player.Dexterity++;
+                    player.Charisma++;
                     break;
                 case ("4"): player.Class = "Commoner";
                     break;
@@ -129,6 +142,11 @@ namespace AdventureGame
                     SelectClass();
                     break;
             }
+        }
+        private static void SelectName()
+        {
+            Console.Write("What is the name of your character?\n");
+            player.Name = Console.ReadLine();
         }
         #endregion
 

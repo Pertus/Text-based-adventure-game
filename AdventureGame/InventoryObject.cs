@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class GameObject
+    public abstract class InventoryObject
     {
+        public string Name { get; set; }
         public int Weight { get; set; }
     }
 }

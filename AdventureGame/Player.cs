@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class Player
+    public class Player
     {
         //Basic info
         public string Name { get; set; }
@@ -24,10 +24,14 @@ namespace AdventureGame
 
         //Other stats
         public int HP { get; set; }
+        public int MaxHP { get; set; }
         public int Mana { get; set; }
+        public int MaxMana { get; set; }
+        public int XP { get; set; }
+        public int Armor { get; set; }
 
         //Inventory
-        public GameObject[] Inventory { get; set; }
+        public List<InventoryObject> Inventory { get; set; }
 
         public Player()
         {
@@ -38,7 +42,9 @@ namespace AdventureGame
             Wisdom = 6;
             Charisma = 6;
 
-            Inventory = new GameObject[20];
+            XP = 0;
+
+            Inventory = new List<InventoryObject>();
         }
     }
 }
