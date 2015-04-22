@@ -8,18 +8,8 @@ namespace AdventureGame
 {
     class Program
     {
-        //Character information
-        static string gender;
-        static string race;
-        static string characterClass;
-
-        //Character stats
-        static int str;
-        static int dex;
-        static int con;
-        static int intelligence;
-        static int wis;
-        static int charisma;
+        //The player
+        static Player player;
 
         static void Main(string[] args)
         {
@@ -39,20 +29,15 @@ namespace AdventureGame
         #region character creation
         private static void CreateCharacter()
         {
-            str = 6;
-            dex = 6;
-            con = 6;
-            intelligence = 6;
-            wis = 6;
-            charisma = 6;
+            player = new Player();
 
             Console.WriteLine("------Character creation------\n");
             SelectGender();
             SelectRace();
             SelectClass();
-            Console.WriteLine("You are a " + gender.ToLower() + " " + race.ToLower() + " " + characterClass.ToLower() + 
-                "\n\n Your stats is:\n Strength: " + str + "\n Dexterity: " + dex + "\n Constitution: " + con + "\n Intelligence: " + intelligence + 
-                "\n Wisdom: "+ wis + "\n Charisma: " + charisma + "\n\n Is this ok?\n 1. Yes \n 2. No");
+            Console.WriteLine("You are a " + player.Gender.ToLower() + " " + player.Race.ToLower() + " " + player.Class.ToLower() + 
+                "\n\n Your stats is:\n Strength: " + player.Strength + "\n Dexterity: " + player.Dexterity + "\n Constitution: " + player.Constitution + "\n Intelligence: " + player.Intelligence + 
+                "\n Wisdom: "+ player.Wisdom + "\n Charisma: " + player.Charisma + "\n\n Is this ok?\n 1. Yes \n 2. No");
             string confirmation = Console.ReadLine();
 
             switch (confirmation)
@@ -72,10 +57,10 @@ namespace AdventureGame
             string generSelector = Console.ReadLine();
             switch (generSelector)
             {
-                case ("1"): gender = "Female";
+                case ("1"): player.Gender = "Female";
                     Console.WriteLine("Your gender is female\n");
                     break;
-                case ("2"): gender = "Male";
+                case ("2"): player.Gender = "Male";
                     Console.WriteLine("Ýour gender is male\n");
                     break;
                 default: Console.WriteLine("You have to choose between the presented options");
@@ -89,29 +74,29 @@ namespace AdventureGame
             string raceSelector = Console.ReadLine();
             switch (raceSelector)
             {
-                case ("1"): race = "Human";
+                case ("1"): player.Race = "Human";
                     Console.WriteLine("You are a human");
                     break;
-                case ("2"): race = "Elf";
+                case ("2"): player.Race = "Elf";
                     Console.WriteLine("You are an elf");
-                    dex += 2;
-                    str -= 2;
-                    con -= 2;
-                    intelligence += 2;
+                    player.Strength -= 2;
+                    player.Dexterity += 2;
+                    player.Constitution -= 2;
+                    player.Intelligence += 2;
                     break;
-                case ("3"): race = "Orc";
+                case ("3"): player.Race = "Orc";
                     Console.WriteLine("You are an orc");
-                    str += 4;
-                    con += 4;
-                    intelligence -= 4;
-                    charisma -= 4;
+                    player.Strength += 4;
+                    player.Constitution += 4;
+                    player.Intelligence -= 4;
+                    player.Charisma -= 4;
                     break;
-                case ("4"): race = "Drow";
+                case ("4"): player.Race = "Drow";
                     Console.WriteLine("You are a drow");
-                    dex += 2;
-                    str -= 2;
-                    con -= 2;
-                    intelligence += 2;
+                    player.Strength -= 2;
+                    player.Dexterity += 2;
+                    player.Constitution -= 2;
+                    player.Intelligence += 2;
                     break;
                 default: Console.WriteLine("You have to choose between the presented options");
                     SelectRace();
@@ -124,15 +109,21 @@ namespace AdventureGame
             string classSelector = Console.ReadLine();
             switch (classSelector)
             {
-                case ("1"): characterClass = "Warrior";
+                case ("1"): player.Class = "Warrior";
                     break;
-                case ("2"): characterClass = "Mage";
+                case ("2"): player.Class = "Mage";
                     break;
-                case ("3"): characterClass = "Thief";
+                case ("3"): player.Class = "Thief";
                     break;
-                case ("4"): characterClass = "Commoner";
+                case ("4"): player.Class = "Commoner";
                     break;
-                case ("5"): characterClass = "Waste of skin";
+                case ("5"): player.Class = "Waste of skin";
+                    player.Strength -= 2;
+                    player.Dexterity -= 2;
+                    player.Constitution -= 2;
+                    player.Intelligence -= 2;
+                    player.Wisdom -= 2;
+                    player.Charisma -= 2;
                     break;
                 default: Console.WriteLine("You have to choose between the presented options");
                     SelectClass();
