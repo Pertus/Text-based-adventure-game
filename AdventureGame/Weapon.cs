@@ -28,6 +28,7 @@ namespace AdventureGame
             MaxDamage = maxDamage;
             AttackBonus = attackBonus;
             DamageType = damageType;
+            
         }
     }
 
