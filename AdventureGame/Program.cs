@@ -123,12 +123,20 @@ namespace AdventureGame
                 case ("2"): player.Class = "Mage";
                     player.Intelligence++;
                     player.Wisdom++;
+                    player.Inventory.Add(new Weapon("Magic stick", false, 0.0, 0.0, 1.0, 10, 11, 8, DamageType.Magic));
+                    player.Inventory.Add(new Consumable("Mana potion", ConsumableEffects.ManaPotion));
+                    player.Inventory.Add(new Armor("Mages robe", 2));
                     break;
                 case ("3"): player.Class = "Thief";
                     player.Dexterity++;
                     player.Charisma++;
+                    player.Inventory.Add(new Weapon("Poison dagger", false, 0.3, 1.0, 0.0, 14, 18, 2, DamageType.Poison));
+                    player.Inventory.Add(new NonConsumable("Lockpick"));
+                    player.Inventory.Add(new Armor("Cloak", 3));
                     break;
                 case ("4"): player.Class = "Commoner";
+                    player.Inventory.Add(new Weapon("Knife", false, 0.5, 0.5, 0.0, 5, 10, 2, DamageType.Pierce));
+                    player.Inventory.Add(new Armor("Common clothes", 2));
                     break;
                 case ("5"): player.Class = "Waste of skin";
                     player.Strength -= 2;
@@ -137,6 +145,7 @@ namespace AdventureGame
                     player.Intelligence -= 2;
                     player.Wisdom -= 2;
                     player.Charisma -= 2;
+                    player.Inventory.Add(new NonConsumable("Blood stained idol"));
                     break;
                 default: Console.WriteLine("You have to choose between the presented options");
                     SelectClass();

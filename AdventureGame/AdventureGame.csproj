@@ -45,6 +45,7 @@
     <Compile Include="Consumable.cs" />
     <Compile Include="ConsumableEffects.cs" />
     <Compile Include="InventoryObject.cs" />
+    <Compile Include="NonConsumable.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
