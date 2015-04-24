@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AdventureGame.Chapters;
 namespace AdventureGame
 {
     class Program
@@ -13,14 +13,16 @@ namespace AdventureGame
 
         static void Main(string[] args)
         {
+            ScenesRepository sceneRepo = new ScenesRepository();
+            sceneRepo.CreateScenes();
             Console.WriteLine("------------EPIC ADVENTURE GAME-----------\n");
             CreateCharacter();
-            Console.ReadLine();
+            while (Console.ReadLine() != "quit") ;
         }
         private static void StartGame()
         {
             Console.Clear();
-            Console.WriteLine("Game is started");
+            Chapters.Prologue.PrologueChapter.Start(player);
         }
         #region character creation
         private static void CreateCharacter()
@@ -36,7 +38,7 @@ namespace AdventureGame
             Console.WriteLine("You are " + player.Name + ". " + "A " + player.Gender.ToLower() + " " + player.Race.ToLower() + " " + player.Class.ToLower() +
                 ".\n\n Your stats is:\n Strength: " + player.Strength + "\n Dexterity: " + player.Dexterity + "\n Constitution: " + player.Constitution + "\n Intelligence: " + player.Intelligence +
                 "\n Wisdom: " + player.Wisdom + "\n Charisma: " + player.Charisma);
-            Console.WriteLine("\n You have the following items in your inventory:");
+            Console.WriteLine("\nYou have the following items in your inventory:");
             foreach (InventoryObject i in player.Inventory)
             {
                 Console.WriteLine(i.Name);
@@ -118,25 +120,25 @@ namespace AdventureGame
                     player.Constitution++;
                     player.Inventory.Add(new Weapon("Longsword", true, 1.0, 0.2, 0.0, 10, 13, 5, DamageType.Pierce));
                     player.Inventory.Add(new Consumable("Health potion", ConsumableEffects.HealthPotion));
-                    player.Inventory.Add(new Armor("Chainmail", 5));
+                    player.Armor = new Armor("Chainmail", 5);
                     break;
                 case ("2"): player.Class = "Mage";
                     player.Intelligence++;
                     player.Wisdom++;
                     player.Inventory.Add(new Weapon("Magic stick", false, 0.0, 0.0, 1.0, 10, 11, 8, DamageType.Magic));
                     player.Inventory.Add(new Consumable("Mana potion", ConsumableEffects.ManaPotion));
-                    player.Inventory.Add(new Armor("Mages robe", 2));
+                    player.Armor = new Armor("Mages robe", 2);
                     break;
                 case ("3"): player.Class = "Thief";
                     player.Dexterity++;
                     player.Charisma++;
                     player.Inventory.Add(new Weapon("Poison dagger", false, 0.3, 1.0, 0.0, 14, 18, 2, DamageType.Poison));
                     player.Inventory.Add(new NonConsumable("Lockpick"));
-                    player.Inventory.Add(new Armor("Cloak", 3));
+                    player.Armor = new Armor("Cloak", 3);
                     break;
                 case ("4"): player.Class = "Commoner";
                     player.Inventory.Add(new Weapon("Knife", false, 0.5, 0.5, 0.0, 5, 10, 2, DamageType.Pierce));
-                    player.Inventory.Add(new Armor("Common clothes", 2));
+                    player.Armor = new Armor("Common clothes", 2);
                     break;
                 case ("5"): player.Class = "Waste of skin";
                     player.Strength -= 2;

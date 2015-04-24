@@ -28,10 +28,13 @@ namespace AdventureGame
         public int Mana { get; set; }
         public int MaxMana { get; set; }
         public int XP { get; set; }
-        public int Armor { get; set; }
+        public int Level { get; set; }
 
         //Inventory
         public List<InventoryObject> Inventory { get; set; }
+
+        //Equipped
+        public Armor Armor { get; set; }
 
         public Player()
         {
@@ -43,8 +46,10 @@ namespace AdventureGame
             Charisma = 6;
 
             XP = 0;
+            Level = 1;
 
             Inventory = new List<InventoryObject>();
         }
+
     }
 }

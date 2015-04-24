@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventureGame
 {
-    class Armor:InventoryObject
+    public class Armor:InventoryObject
     {
         public int ArmorValue { get; set; }
 
